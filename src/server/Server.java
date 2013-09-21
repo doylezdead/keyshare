@@ -7,7 +7,7 @@ public class Server {
 	public static void main(String[] args){
 		String data = "This is test data";
 		try {
-			ServerSocket srvr = new ServerSocket(1234);
+			ServerSocket srvr = new ServerSocket(13337);
 			Socket skt = srvr.accept();
 			System.out.print("Server has connected!\n");
 			PrintWriter out = new PrintWriter(skt.getOutputStream(), true);
