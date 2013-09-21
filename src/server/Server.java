@@ -2,28 +2,39 @@ package server;
 
 import java.net.*;
 import java.io.*;
+
 /**
  * 
  * @author Ryan Doyle, Sven Stroven, Chris Coppernoll
  * 
  *
  */
+
 public class Server {
 	public static void main(String[] args){
-		String data = "This is test data";
+		String data = "I'm sending you keypressessssss";
 		try {
+			
+			System.out.println("Waiting for connections ...");
 			ServerSocket srvr = new ServerSocket(13337);
 			Socket skt = srvr.accept();
-			System.out.print("Server has connected!\n");
+			BufferedReader in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+			System.out.print("Client has connected to the server!!!\n");
+			
+			
+			while (!in.ready()) {} //loop to wait for reader to get ready from output of printwriter on client
+			System.out.println(in.readLine());
+			
+			
 			PrintWriter out = new PrintWriter(skt.getOutputStream(), true);
-			System.out.print("Sending string: '" + data + "'\n");
+			System.out.print("Sending back to client");
 			out.print(data);
 			out.close();
 			skt.close();
 			srvr.close();
 		}
 		catch(Exception e) {
-			System.out.print("Whoops! It didn't work!\n");
+			System.out.print("No connection found\n");
 		}
 	}
 }
