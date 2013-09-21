@@ -30,13 +30,17 @@ public class ClientGUI {
 		IP = new JTextField("Enter a remote IP address");
 		start = new JButton("Start");
 
-		IP.addActionListener(new ClientListener(this, cGui, false));
-		start.addActionListener(new ClientListener(this, cGui, true));
+		start.addActionListener(new ClientListener(this, cGui));
 
 		cGui.add(IP);
 		cGui.add(start);
 
 		cGui.setVisible(true);
 
+	}
+
+	public static void main(String[] args) {
+
+		new ClientGUI();
 	}
 }
