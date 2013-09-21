@@ -11,28 +11,38 @@ import java.io.*;
  */
 
 public class Server {
-	public static void main(String[] args){
-		String data = "I'm pushing back to the client(disconnect or something)";
+
+	public Server(){
+		receiver();
+	}
+
+	public void receiver(){
+		WorkerRobot robot = new WorkerRobot();
 		try {
-			
+
 			System.out.println("Waiting for connections ...");
 			ServerSocket srvr = new ServerSocket(13337);
-			
+
 			Socket skt = srvr.accept();
 			System.out.print("Client has connected to the server!!!\n");
-			
+
 			ObjectInputStream ois = new ObjectInputStream(skt.getInputStream());	//skt's input stream
+
+			PrintWriter out = new PrintWriter(skt.getOutputStream(), true);			//skt's output stream	
 			
-			PrintWriter out = new PrintWriter(skt.getOutputStream(), true);			//skt's output stream
+			int[] readArray = null;
 			
-			
-			out.print(data);														
-			int[] readArray = (int[])ois.readObject();
-			for(int i=0;i<readArray.length;i++){
-				System.out.print(readArray[i] + ",");
+			while(!Thread.interrupted()){
+				Thread.sleep(5);
+				readArray = (int[])ois.readObject();
+				if(readArray[0]==10)
+					break;
+				
+				
+				robot.work(readArray);
+				
 			}
-			
-			
+
 			out.close();		//
 			skt.close();		// close all resources
 			srvr.close();		//
@@ -40,5 +50,9 @@ public class Server {
 		catch(Exception e) {
 			e.printStackTrace();//"No connection found\n");
 		}
+	}
+
+	public static void main(String[] args){
+
 	}
 }
