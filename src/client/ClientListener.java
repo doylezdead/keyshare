@@ -10,13 +10,16 @@ public class ClientListener implements ActionListener {
 	private JFrame gui;
 	private ClientGUI Client;
 	private boolean initiated = false;
+	private boolean jbutton;
+	protected String address;
 
 	/**
 	 * @param args
 	 */
-	public ClientListener(ClientGUI b, JFrame g) {
+	public ClientListener(ClientGUI b, JFrame g, boolean button) {
 		gui = g;
 		Client = b;
+		jbutton = button;
 
 	}
 
@@ -26,8 +29,14 @@ public class ClientListener implements ActionListener {
 		}
 
 		else {
-			Client.start.setText("Switch");
+			if (jbutton == true) {
+				Client.start.setText("Switch");
+			} else if (jbutton == false) {
+				address = Client.IP.getText();
+				Client cli = (new Client(address)).start();
+			}
 			initiated = true;
+
 		}
 	}
 

@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 public class ClientGUI {
 
 	protected JButton start;
+	protected JTextField IP = new JTextField();
 
 	public ClientGUI() {
 
@@ -26,10 +27,11 @@ public class ClientGUI {
 		// set the size of the window
 		cGui.setSize(500, 400);
 
-		JTextField IP = new JTextField("Enter a remote IP address");
+		IP = new JTextField("Enter a remote IP address");
 		start = new JButton("Start");
 
-		start.addActionListener(new ClientListener(this, cGui));
+		IP.addActionListener(new ClientListener(this, cGui, false));
+		start.addActionListener(new ClientListener(this, cGui, true));
 
 		cGui.add(IP);
 		cGui.add(start);
