@@ -11,7 +11,7 @@ public class ServerGUI {
 
 	public ServerGUI() {
 
-		Server srv = (new Server()).start();
+		Server srv = new Server();
 
 		// Create a new JFrame.
 		JFrame gui = new JFrame();

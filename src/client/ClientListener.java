@@ -33,7 +33,7 @@ public class ClientListener implements ActionListener {
 				Client.start.setText("Switch");
 			} else if (jbutton == false) {
 				address = Client.IP.getText();
-				Client cli = (new Client(address)).start();
+				Client cli = new Client(address);
 			}
 			initiated = true;
 
