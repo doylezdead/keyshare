@@ -20,6 +20,7 @@ public class ServerListener implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Gui.setVisible(false);
+
 	}
 
 	// Start of Constructor.

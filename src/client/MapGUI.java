@@ -26,8 +26,6 @@ public class MapGUI {
 
 		// set the size of the window
 
-		// TODO Auto-generated method stub
-
 	}
 
 }
