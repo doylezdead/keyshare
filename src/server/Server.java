@@ -2,7 +2,12 @@ package server;
 
 import java.net.*;
 import java.io.*;
-
+/**
+ * 
+ * @author Ryan Doyle, Sven Stroven, Chris Coppernoll
+ * 
+ *
+ */
 public class Server {
 	public static void main(String[] args){
 		String data = "This is test data";
