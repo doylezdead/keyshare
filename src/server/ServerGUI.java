@@ -11,7 +11,7 @@ public class ServerGUI {
 
 	public ServerGUI() {
 
-		new Server().start();
+		
 
 		// Create a new JFrame.
 		JFrame gui = new JFrame();
@@ -33,6 +33,8 @@ public class ServerGUI {
 		disconnect.addActionListener(new ServerListener(gui));
 		gui.add(disconnect);
 		gui.setVisible(true);
+		
+		//new Server().start();
 
 	}
 }

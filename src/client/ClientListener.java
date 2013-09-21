@@ -9,6 +9,7 @@ public class ClientListener implements ActionListener {
 
 
 	private ClientGUI Client;
+	public MapGUI Mapper;
 	private boolean initiated = false;
 	protected String address;
 
@@ -36,9 +37,10 @@ public class ClientListener implements ActionListener {
 			
 			
 			Client.IP.setEditable(false);
-			new MapGUI();
-			InputReader ir = new InputReader();
-			new Client("localhost", ir).start();
+			
+			new MapGUI(this, address);
+			//InputReader ir = new InputReader();
+			
 			System.out.println("Client thread worked");
 		}
 		initiated = true;
