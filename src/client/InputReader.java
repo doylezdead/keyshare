@@ -5,11 +5,14 @@ import java.awt.event.*;
 
 public class InputReader extends Applet implements MouseListener,
 										MouseWheelListener,
-										MouseMotionListener {
+										MouseMotionListener,
+										KeyListener{
 
 	public void init() {
 		this.addMouseListener(this);
 		this.addMouseWheelListener(this);
+		this.addMouseMotionListener(this);
+		this.addKeyListener(this);
 	}
 	
 	//MouseListener stuff
@@ -72,6 +75,7 @@ public class InputReader extends Applet implements MouseListener,
 		}
 	}	
 	
+	
 	//MouseWheelListener stuff
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e){
@@ -79,11 +83,32 @@ public class InputReader extends Applet implements MouseListener,
 		System.out.println(rotation);
 	}
 	
+	
 	//MouseMotionListener stuff
 	@Override
-	public void mouseDragged(MouseEvent e){}
+	public void mouseDragged(MouseEvent e){
+		Point coords = MouseInfo.getPointerInfo().getLocation();
+		System.out.println("x:" + coords.getX() + " y:" + coords.getY());
+	}
 	@Override
 	public void mouseMoved(MouseEvent e){
-		Point coords = getLocation();
+		Point coords = MouseInfo.getPointerInfo().getLocation();
+		System.out.println("x:" + coords.getX() + " y:" + coords.getY());
 	}
+	
+	
+	//KeyListener stuff
+	@Override
+	public void keyPressed(KeyEvent e){
+		int key = e.getKeyCode();
+		System.out.println(key + " PRESS");
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e){
+		int key = e.getKeyCode();
+		System.out.println(key + " RELEASE");
+	}
+	@Override
+	public void keyTyped(KeyEvent e){}
 }
