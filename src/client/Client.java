@@ -11,23 +11,22 @@ import java.net.*;
 public class Client extends Thread {
 	String address = null;
 	
-	public Client(String addr){
+	public Client(String addr, InputReader ir){
 		address = addr;
-		new Client().start();
+		this.run(addr,ir);
+	}
+	
+	public Client getInstance(){
+		return this;
 	}
 	
 
-	public Client() {
-		// TODO Auto-generated constructor stub
-	}
 
 
-	public void run(String addr){
+	public void run(String addr, InputReader ir){
 		System.out.println("RUNNING");
 		for (int i = 0; i <= 1; i++) {
 			try {
-
-				InputReader ir = new InputReader();
 
 
 				Socket skt = new Socket(address, 13337);
@@ -36,6 +35,13 @@ public class Client extends Thread {
 				ObjectOutputStream oos = new ObjectOutputStream(skt.getOutputStream());		
 				
 				
+				while(true){
+					Thread.sleep(5);
+					oos.writeObject(ir.commands);
+					if(ir.commands[0]==20){
+						break;
+					}
+				}
 				
 
 				skt.close();
@@ -62,6 +68,6 @@ public class Client extends Thread {
 	
 	
 	public static void main(String[] args){
-		
+		new Client("localhost", new InputReader()).start();
 	}
 }

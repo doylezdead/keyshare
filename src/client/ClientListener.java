@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class ClientListener implements ActionListener {
 
-	private JFrame gui;
+
 	private ClientGUI Client;
 	private boolean initiated = false;
 	protected String address;
@@ -16,7 +16,7 @@ public class ClientListener implements ActionListener {
 	 * @param args
 	 */
 	public ClientListener(ClientGUI b, JFrame g) {
-		gui = g;
+
 		Client = b;
 
 	}
@@ -30,10 +30,16 @@ public class ClientListener implements ActionListener {
 
 			Client.start.setText("Switch");
 
+			
 			address = Client.IP.getText();
-			// Client cli = (new Client(address));
+			
+			
+			
 			Client.IP.setEditable(false);
 			new MapGUI();
+			InputReader ir = new InputReader();
+			new Client("localhost", ir).start();
+			System.out.println("Client thread worked");
 		}
 		initiated = true;
 

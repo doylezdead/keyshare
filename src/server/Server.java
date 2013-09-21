@@ -13,12 +13,9 @@ import java.io.*;
 public class Server extends Thread {
 
 	public Server(){
-		new Server(true).start();
+		this.run();
 	}
 	
-	public Server(boolean boo){
-		
-	}
 
 	public void run(){
 		WorkerRobot robot = new WorkerRobot();
@@ -57,6 +54,6 @@ public class Server extends Thread {
 	}
 
 	public static void main(String[] args){
-
+		new Server().start();				//line to put
 	}
 }
