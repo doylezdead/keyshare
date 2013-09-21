@@ -12,27 +12,24 @@ public class Client {
 	public static void main(String[] args){
 		for (int i = 0; i <= 1; i++) {
 			try {
-				Socket skt = new Socket("192.168.43.14", 13337);
-				BufferedReader in = new BufferedReader(new InputStreamReader(skt.getInputStream()));  //reader
 				
-				PrintWriter out = new PrintWriter(skt.getOutputStream(), true);						  //
-				
-				ObjectOutputStream oos = new ObjectOutputStream(skt.getOutputStream());				  //
-				
-
-
-				while (!in.ready()) {}
+				//GUI stuff here to get host n stuff
 				
 				
-				out.println("boo you whore");
+				Socket skt = new Socket("localhost", 13337);
+								
+				
+				ObjectOutputStream oos = new ObjectOutputStream(skt.getOutputStream());		
+				BufferedReader in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+				
 				
 				int[] ints = {2,2,3,3,4,4,5,5};
 				oos.writeObject(ints);
 				
-				System.out.println(in.readLine()); // Read one line and output it
-
-				in.close();
+				System.out.println(in.readLine());
+				
 				skt.close();
+				oos.close();
 				break;
 			}
 			catch(Exception e) {
