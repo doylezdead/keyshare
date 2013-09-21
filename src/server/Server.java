@@ -12,7 +12,7 @@ import java.io.*;
 
 public class Server {
 	public static void main(String[] args){
-		String data = "I'm sending you keypressessssss";
+		String data = "I'm pushing back to the client";
 		try {
 			
 			System.out.println("Waiting for connections ...");
@@ -23,6 +23,8 @@ public class Server {
 			
 			
 			while (!in.ready()) {} //loop to wait for reader to get ready from output of printwriter on client
+			
+			
 			System.out.println(in.readLine());
 			
 			
