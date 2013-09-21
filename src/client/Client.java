@@ -8,7 +8,7 @@ import java.net.*;
  * 
  *
  */
-public class Client {
+public class Client extends Thread {
 	public Client(String addr){
 		for (int i = 0; i <= 1; i++) {
 			try {

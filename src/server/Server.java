@@ -10,7 +10,7 @@ import java.io.*;
  *
  */
 
-public class Server {
+public class Server extends Thread {
 
 	public Server(){
 		receiver();
