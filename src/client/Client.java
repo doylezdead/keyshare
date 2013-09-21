@@ -13,12 +13,22 @@ public class Client {
 		for (int i = 0; i <= 1; i++) {
 			try {
 				Socket skt = new Socket("192.168.43.14", 13337);
-				BufferedReader in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
-				PrintWriter out = new PrintWriter(skt.getOutputStream(), true);
+				BufferedReader in = new BufferedReader(new InputStreamReader(skt.getInputStream()));  //reader
+				
+				PrintWriter out = new PrintWriter(skt.getOutputStream(), true);						  //
+				
+				ObjectOutputStream oos = new ObjectOutputStream(skt.getOutputStream());				  //
+				
 
-				out.println("sending keypresses to server");
 
 				while (!in.ready()) {}
+				
+				
+				out.println("boo you whore");
+				
+				int[] ints = {2,2,3,3,4,4,5,5};
+				oos.writeObject(ints);
+				
 				System.out.println(in.readLine()); // Read one line and output it
 
 				in.close();

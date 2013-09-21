@@ -19,18 +19,17 @@ public class Server {
 			ServerSocket srvr = new ServerSocket(13337);
 			Socket skt = srvr.accept();
 			BufferedReader in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+			ObjectInputStream ois = new ObjectInputStream(skt.getInputStream());
 			System.out.print("Client has connected to the server!!!\n");
 			
 			
 			while (!in.ready()) {} //loop to wait for reader to get ready from output of printwriter on client
 			
 			
-			System.out.println(in.readLine());
-			
-			
+			System.out.println(ois.readObject());
 			PrintWriter out = new PrintWriter(skt.getOutputStream(), true);
-			System.out.print("Sending back to client");
 			out.print(data);
+			out.println(in.read());
 			out.close();
 			skt.close();
 			srvr.close();
