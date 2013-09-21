@@ -16,7 +16,7 @@ public class InputReader extends Applet implements MouseListener,
 	}
 	
 	//has list of commands for robot to execute for listeners
-	int commands[] = new int[3];
+	public int commands[] = new int[3];
 	
 	//MouseListener stuff
 	@Override
