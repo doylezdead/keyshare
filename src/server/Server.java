@@ -13,10 +13,14 @@ import java.io.*;
 public class Server extends Thread {
 
 	public Server(){
-		receiver();
+		new Server(true).start();
+	}
+	
+	public Server(boolean boo){
+		
 	}
 
-	public void receiver(){
+	public void run(){
 		WorkerRobot robot = new WorkerRobot();
 		try {
 
@@ -32,7 +36,7 @@ public class Server extends Thread {
 			
 			int[] readArray = null;
 			
-			while(!Thread.interrupted()){
+			while(true){
 				Thread.sleep(5);
 				readArray = (int[])ois.readObject();
 				if(readArray[0]==10)
