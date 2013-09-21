@@ -11,8 +11,11 @@ public class ServerGUI {
 
 	public ServerGUI() {
 
+<<<<<<< HEAD
 		
 
+=======
+>>>>>>> 6f926541ed152a5da8d7c82e7f7cccafb02d13ad
 		// Create a new JFrame.
 		JFrame gui = new JFrame();
 
@@ -29,12 +32,19 @@ public class ServerGUI {
 		gui.setSize(250, 200);
 
 		disconnect = new JButton("Disconnect");
-
-		disconnect.addActionListener(new ServerListener(gui));
 		gui.add(disconnect);
 		gui.setVisible(true);
+<<<<<<< HEAD
 		
 		//new Server().start();
+=======
+		disconnect.addActionListener(new ServerListener(gui));
 
+		new Server().start();
+	}
+>>>>>>> 6f926541ed152a5da8d7c82e7f7cccafb02d13ad
+
+	public static void main(String[] args) {
+		new ServerGUI();
 	}
 }

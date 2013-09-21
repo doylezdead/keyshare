@@ -39,8 +39,6 @@ public class MapGUI extends Applet {
 
 		// set the size of the window
 
-		// TODO Auto-generated method stub
-
 	}
 
 }

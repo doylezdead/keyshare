@@ -30,6 +30,7 @@ public class ClientGUI {
 		IP = new JTextField("Enter a remote IP address");
 		start = new JButton("Start");
 
+		// Add a listener.
 		start.addActionListener(new ClientListener(this, cGui));
 
 		cGui.add(IP);
